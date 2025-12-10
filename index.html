@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopHub - Modern E-Commerce Store</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">ShopHub</a>
+
+            <nav class="nav">
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="checkout.html" class="nav-link">Cart</a></li>
+                    <li><a href="auth.html" class="nav-link auth-link">Login</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="checkout.html" class="cart-icon-wrapper">
+                        <svg class="cart-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <a href="account.html" class="user-icon">?</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Replace your existing hero section with this: -->
+<section class="hero">
+    <div class="hero-container">
+        <!-- Background decorative elements -->
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-text">
+                <!-- Badge/Promo -->
+                <div class="hero-badge">
+                    <span class="badge-text">🔥 50% OFF Summer Sale</span>
+                </div>
+                
+                <!-- Main Heading with Animation -->
+                <h1 class="hero-title">
+                    <span class="title-line">Elevate Your</span>
+                    <span class="title-line gradient-text">Shopping Experience</span>
+                </h1>
+                
+                <!-- Animated Description -->
+                <p class="hero-subtitle">
+                    Discover premium products curated with precision. 
+                    <span class="highlight-text">Free shipping</span> on orders over $50.
+                </p>
+                
+                <!-- Interactive Stats -->
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="5000">0</span>
+                        <span class="stat-label">Products</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="98">0</span>
+                        <span class="stat-label">% Satisfied</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="24">0</span>
+                        <span class="stat-label">/7 Support</span>
+                    </div>
+                </div>
+                
+                <!-- CTA with Search -->
+                <div class="hero-actions">
+                    <div class="search-container">
+                        <input type="text" 
+                               class="search-input" 
+                               placeholder="Search products, brands, categories...">
+                        <button class="search-btn">
+                            <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="cta-buttons">
+                        <a href="products.html" class="btn btn-primary btn-lg btn-with-icon">
+                            <span>Shop Now</span>
+                            <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                      d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                            </svg>
+                        </a>
+                        <button class="btn btn-outline btn-lg play-video-btn">
+                            ▶ Watch Video
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hero Image with Floating Cards -->
+            <div class="hero-visual">
+                <div class="main-image-container">
+                    <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=800&h=600&fit=crop" 
+                         alt="Modern Shopping Experience" 
+                         class="main-hero-image">
+                    <div class="floating-card card-1">
+                        <div class="floating-icon">⭐</div>
+                        <div class="floating-text">
+                            <div class="floating-title">Top Rated</div>
+                            <div class="floating-desc">4.8/5 Stars</div>
+                        </div>
+                    </div>
+                    <div class="floating-card card-2">
+                        <div class="floating-icon">🚚</div>
+                        <div class="floating-text">
+                            <div class="floating-title">Free Delivery</div>
+                            <div class="floating-desc">In 24 Hours</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span class="scroll-text">Scroll to explore</span>
+        </div>
+    </div>
+</section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Free Shipping</h3>
+                    <p>On orders over $50</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure Payment</h3>
+                    <p>100% secure transactions</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">↩️</div>
+                    <h3>Easy Returns</h3>
+                    <p>30-day return policy</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>24/7 Support</h3>
+                    <p>Dedicated customer service</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="featured-products" id="featured">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Products</h2>
+                <p>Handpicked items just for you</p>
+            </div>
+            <div class="products-grid" id="featuredProductsGrid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+            <div class="section-footer">
+                <a href="products.html" class="btn btn-primary">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Join Our Community</h2>
+                <p>Sign up today and get 15% off your first order!</p>
+                <a href="auth.html" class="btn btn-secondary btn-lg">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ShopHub</h3>
+                    <p>Your one-stop destination for premium products. Quality, style, and affordability combined.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="index.html" class="footer-link">Home</a>
+                        <a href="products.html" class="footer-link">Products</a>
+                        <a href="checkout.html" class="footer-link">Cart</a>
+                        <a href="account.html" class="footer-link">Account</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ShopHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>

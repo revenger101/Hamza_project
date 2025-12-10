@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - ShopHub</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/account.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">ShopHub</a>
+            
+            <nav class="nav">
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="checkout.html" class="nav-link">Cart</a></li>
+                    <li><a href="auth.html" class="nav-link auth-link">Login</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <a href="checkout.html" class="cart-icon-wrapper">
+                        <svg class="cart-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <a href="account.html" class="user-icon">?</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Account Section -->
+    <section class="account-section">
+        <div class="container">
+            <div class="account-header">
+                <div class="account-avatar">
+                    <span id="userAvatar">U</span>
+                </div>
+                <div class="account-info">
+                    <h1 id="userName">User Name</h1>
+                    <p id="userEmail">user@example.com</p>
+                </div>
+            </div>
+
+            <div class="account-content">
+                <div class="account-sidebar">
+                    <nav class="account-nav">
+                        <a href="#" class="account-nav-link active" data-section="profile">
+                            <span>👤</span> Profile
+                        </a>
+                        <a href="#" class="account-nav-link" data-section="orders">
+                            <span>📦</span> Orders
+                        </a>
+                        <a href="#" class="account-nav-link" data-section="settings">
+                            <span>⚙️</span> Settings
+                        </a>
+                        <button class="account-nav-link logout-btn" onclick="handleLogout()">
+                            <span>🚪</span> Sign Out
+                        </button>
+                    </nav>
+                </div>
+
+                <div class="account-main">
+                    <!-- Profile Section -->
+                    <div class="account-section-content active" id="profileSection">
+                        <h2>Profile Information</h2>
+                        <div class="info-card">
+                            <div class="info-row">
+                                <span class="info-label">Full Name</span>
+                                <span class="info-value" id="profileName">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Email Address</span>
+                                <span class="info-value" id="profileEmail">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Member Since</span>
+                                <span class="info-value" id="profileDate">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Orders Section -->
+                    <div class="account-section-content" id="ordersSection">
+                        <h2>Order History</h2>
+                        <div class="empty-state">
+                            <div class="empty-icon">📦</div>
+                            <h3>No Orders Yet</h3>
+                            <p>You haven't placed any orders yet. Start shopping to see your orders here!</p>
+                            <a href="products.html" class="btn btn-primary">Start Shopping</a>
+                        </div>
+                    </div>
+
+                    <!-- Settings Section -->
+                    <div class="account-section-content" id="settingsSection">
+                        <h2>Account Settings</h2>
+                        <div class="settings-card">
+                            <h3>Preferences</h3>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <strong>Email Notifications</strong>
+                                    <p>Receive updates about your orders and promotions</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <strong>Newsletter</strong>
+                                    <p>Get the latest news and exclusive offers</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="settings-card danger-zone">
+                            <h3>Danger Zone</h3>
+                            <button class="btn btn-outline" style="color: var(--error); border-color: var(--error);">
+                                Delete Account
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ShopHub</h3>
+                    <p>Your one-stop destination for premium products.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ShopHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/account-page.js"></script>
+</body>
+</html>
+
