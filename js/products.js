@@ -1,6 +1,10 @@
 // Product Data and Management
 
-const products = [
+const STORAGE_KEYS = {
+    products: 'products'
+};
+
+const DEFAULT_PRODUCTS = [
     {
         id: 1,
         name: "Premium Wireless Headphones",
@@ -111,25 +115,128 @@ const products = [
     }
 ];
 
+function safeJsonParse(value, fallback) {
+    try {
+        return JSON.parse(value);
+    } catch {
+        return fallback;
+    }
+}
+
+function normalizeProduct(raw) {
+    if (!raw || typeof raw !== 'object') return null;
+
+    const id = Number(raw.id);
+    const price = Number(raw.price);
+
+    return {
+        id: Number.isFinite(id) ? id : Date.now(),
+        name: String(raw.name ?? '').trim(),
+        price: Number.isFinite(price) ? price : 0,
+        category: String(raw.category ?? '').trim(),
+        image: String(raw.image ?? '').trim(),
+        description: String(raw.description ?? '').trim(),
+        featured: Boolean(raw.featured)
+    };
+}
+
+function loadProductsFromStorage() {
+    const raw = localStorage.getItem(STORAGE_KEYS.products);
+    if (!raw) return null;
+
+    const parsed = safeJsonParse(raw, null);
+    if (!Array.isArray(parsed)) return null;
+
+    const normalized = parsed.map(normalizeProduct).filter(Boolean);
+    return normalized;
+}
+
+function saveProductsToStorage(list) {
+    localStorage.setItem(STORAGE_KEYS.products, JSON.stringify(list));
+}
+
+function seedProductsIfEmpty() {
+    const existing = loadProductsFromStorage();
+    if (existing && existing.length >= 0) return;
+    saveProductsToStorage([...DEFAULT_PRODUCTS]);
+}
+
+seedProductsIfEmpty();
+
+let products = loadProductsFromStorage() || [...DEFAULT_PRODUCTS];
+
+function syncGlobalProductsReference() {
+    window.products = products;
+}
+
+syncGlobalProductsReference();
+
+// Public: get all products (live from storage)
+function getAllProducts() {
+    products = loadProductsFromStorage() || products;
+    syncGlobalProductsReference();
+    return products;
+}
+
+// Public: replace all products
+function setAllProducts(nextProducts) {
+    products = Array.isArray(nextProducts) ? nextProducts.map(normalizeProduct).filter(Boolean) : [];
+    saveProductsToStorage(products);
+    syncGlobalProductsReference();
+    return products;
+}
+
+// Public: create product
+function createProduct(productData) {
+    const all = getAllProducts();
+    const maxId = all.length > 0 ? Math.max(...all.map(p => Number(p.id) || 0)) : 0;
+    const newProduct = normalizeProduct({
+        id: maxId + 1,
+        ...productData
+    });
+    const next = [...all, newProduct];
+    setAllProducts(next);
+    return newProduct;
+}
+
+// Public: update product
+function updateProduct(id, productData) {
+    const targetId = Number(id);
+    const all = getAllProducts();
+    const next = all.map(p => (p.id === targetId ? normalizeProduct({ ...p, ...productData, id: p.id }) : p));
+    setAllProducts(next);
+    return next.find(p => p.id === targetId) || null;
+}
+
+// Public: delete product
+function removeProduct(id) {
+    const targetId = Number(id);
+    const all = getAllProducts();
+    const next = all.filter(p => p.id !== targetId);
+    setAllProducts(next);
+    return next.length !== all.length;
+}
+
 // Get product by ID
 function getProductById(id) {
-    return products.find(product => product.id === parseInt(id));
+    return getAllProducts().find(product => product.id === parseInt(id));
 }
 
 // Get featured products
 function getFeaturedProducts() {
-    return products.filter(product => product.featured);
+    return getAllProducts().filter(product => product.featured);
 }
 
 // Get products by category
 function getProductsByCategory(category) {
-    if (category === 'all') return products;
-    return products.filter(product => product.category === category);
+    const all = getAllProducts();
+    if (category === 'all') return all;
+    return all.filter(product => product.category === category);
 }
 
 // Get all categories
 function getCategories() {
-    const categories = [...new Set(products.map(product => product.category))];
+    const categories = [...new Set(getAllProducts().map(product => product.category))];
     return ['all', ...categories];
 }
 
@@ -140,6 +247,11 @@ function formatPrice(price) {
 
 // Make products available globally
 window.products = products;
+window.getAllProducts = getAllProducts;
+window.setAllProducts = setAllProducts;
+window.createProduct = createProduct;
+window.updateProduct = updateProduct;
+window.removeProduct = removeProduct;
 window.getProductById = getProductById;
 window.getFeaturedProducts = getFeaturedProducts;
 window.getProductsByCategory = getProductsByCategory;
